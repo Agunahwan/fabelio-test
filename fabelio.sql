@@ -46,8 +46,8 @@ CREATE TABLE `product` (
   `id` bigint(20) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `price` decimal(10,0) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `image` varchar(50) DEFAULT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `url` varchar(50) DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
   `updated_date` datetime DEFAULT NULL,
@@ -57,10 +57,7 @@ CREATE TABLE `product` (
 /*Data for the table `product` */
 
 insert  into `product`(`id`,`name`,`price`,`description`,`image`,`url`,`created_date`,`updated_date`) values 
-(416,'Rak Jon (White)',199000,'Rapikan koleksi buku kesayangan Anda dengan Jon Shelf yang digantung di dinding. Desainnya yang minimalis akan menghemat banyak ruang di rumah Anda. Alas rak terbuat dari kayu lapis yang ringan, sementara bagian penyangga rak terbuat dari kayu mahoni solid yang kokoh. Tata dengan rapi dan rak ini pun sekaligus jadi dekorasi ruangan yang fungsional. Produk rakitan, tersedia buku petunjuk NB:&nbsp;Untuk produk yang memerlukan perakitan, akan dilakukan beberapa hari setelah produk dikirim. Apabila ','https://fabelio.com/pub/media/catalog/product/j/o/','https://fabelio.com/ip/jon-shelf.html','2019-06-17 19:52:32',NULL),
-(5779,'Kursi Makan Cessi',379000,'Cessi Dining Chair memiliki tampilan minimalis dan warna-warna yang netral untuk ruangan Anda. Kursi yang akan cocok untuk suasana ruang makan apapun. Kaki kursi yang ramping dan tegas menyeimbangkan kesederhanaan yang tampak kental pada kursi ini. Letakkan kursi makan ini dengan gaya meja makan apapun, tampilannya akan memberikan suasana eksentrik di rumah Anda. Ayo pesan sebelum harga naik!','https://fabelio.com/pub/media/catalog/product/c/e/','https://fabelio.com/ip/cessi-chair.html','2019-06-17 19:52:52',NULL),
-(22197,'Karpet Skandinavia Janne',219120,'Karpet Gaya Skandinavia dengan Desain Monokrom Tak punya banyak biaya untuk mendekorasi rumah? Jangan khawatir, aplikasikan saja karpet! Perkenalkan, aku karpet Skandinavia Janne. Aku memiliki gaya Skandinavia yang cantik dengan motif geometris berwarna monokrom. Aku terbuat dari material polypropylene yang lembut sehingga aku sangat nyaman ketika digunakan. Meskipun aku didominasi warna putih, tapi jangan khawatir, aku mudah dibersihkan, kok!','https://fabelio.com/pub/media/catalog/product/m/a/','https://fabelio.com/ip/karpet-skandinavia-janne.ht','2019-06-17 20:11:17',NULL),
-(24497,'Keset Anti Slip Calisto Lines',89000,'Karpet Caline','https://fabelio.com/pub/media/catalog/product/k/a/','https://fabelio.com/ip/karpet-caline.html','2019-06-17 20:08:26',NULL);
+(416,'Rak Jon (White)',199000,'Rapikan koleksi buku kesayangan Anda dengan Jon Shelf yang digantung di dinding. Desainnya yang minimalis akan menghemat banyak ruang di rumah Anda. Alas rak terbuat dari kayu lapis yang ringan, sementara bagian penyangga rak terbuat dari kayu mahoni solid yang kokoh. Tata dengan rapi dan rak ini pun sekaligus jadi dekorasi ruangan yang fungsional. Produk rakitan, tersedia buku petunjuk NB:&nbsp;Untuk produk yang memerlukan perakitan, akan dilakukan beberapa hari setelah produk dikirim. Apabila telah melebih dari 7 (tujuh) hari setelah produk dikirim belum ada tim kami yang menghubungi jadwal perakitan, Mohon segera hubungi tim Customer Service kami.','https://fabelio.com/pub/media/catalog/product/j/o/Jon_Shelf_(White)_1.jpg','https://fabelio.com/ip/jon-shelf.html','2019-06-19 18:11:12',NULL);
 
 /*Table structure for table `vote_comment` */
 
