@@ -19,7 +19,7 @@
     {!! Html::style('public_html/css/sb-admin-2.css') !!}
 
     <!-- Custom Fonts -->
-    {!! Html::style('laravel/vendor/font-awesome/css/font-awesome.min.css') !!}
+    {!! Html::style('laravel/vendor/components/font-awesome/css/fontawesome.min.css') !!}
 
     <!-- Bootstrap Select -->
     {!! Html::style('laravel/vendor/snapappointments/bootstrap-select/dist/css/bootstrap-select.css') !!}
@@ -55,7 +55,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    {!! Html::script('laravel/vendor/jquery/jquery.min.js') !!}
+    {!! Html::script('laravel/vendor/components/jquery/jquery.min.js') !!}
 
     <!-- Bootstrap Core JavaScript -->
     {!! Html::script('laravel/vendor/bootstrap/js/bootstrap.min.js') !!}
