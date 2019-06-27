@@ -32,4 +32,15 @@ class VoteComment extends Model
 
         return $data;
     }
+
+    public function getVote($commentId, $ip)
+    {
+        $data = DB::table('vote_comment')
+            ->where('comment_id', $commentId)
+            ->where('ip', $ip)
+            ->select('1')
+            ->get();
+
+        return $data;
+    }
 }

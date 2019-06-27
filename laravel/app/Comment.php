@@ -25,22 +25,22 @@ class Comment extends Model
 
     public function getListAllCommentWithVote($idProduct, $ip)
     {
-        $data = DB::select("SELECT c.*,
-                       IFNULL(vc.Up,0) Up, 
-                       IFNULL(vc.Down,0) Down, 
+        $data = DB::select("SELECT DISTINCT c.*,
+                       IFNULL(vc.Up,0) Up,
+                       IFNULL(vc.Down,0) Down,
                        CASE WHEN ip.comment_id IS NULL THEN '0'
                        ELSE '1'
                        END IsIpExist
                 FROM COMMENT c
-                LEFT JOIN 
+                LEFT JOIN
                 (
                     SELECT SUM(up) Up,SUM(down) Down, comment_id
                     FROM vote_comment
                     GROUP BY comment_id
                 ) vc ON c.id=vc.comment_id
                 LEFT JOIN vote_comment ip ON c.id=ip.comment_id
-                AND ip.ip='127.0.0.1'
-                WHERE product_id=416");
+                AND ip.ip='" . $ip . "'
+                WHERE product_id=" . $idProduct);
 
         return $data;
     }

@@ -94,12 +94,11 @@
 <form class="form-horizontal" role="form">
     <div class="row split-border">
         <div class="col-lg-12">
-            @for ($i = 0; $i < count($comment); $i++) 
-            <div class="row">
+            @for ($i = 0; $i < count($comment); $i++) <div class="row">
                 <div class="col-lg-12">
                     <h3>{{ $comment[$i]->title }} ( {{ $comment[$i]->created_date }} )</h3>
                 </div>
-            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 {{ $comment[$i]->comment }}
@@ -108,13 +107,16 @@
         <div class="row">
             <div class="col-lg-2">
                 <a href="#" onclick="vote({{ $comment[$i]->id }}, 1)">
-                    <div id="voteUp{{ $comment[$i]->id }}" class="glyphicon glyphicon-thumbs-up"> {{ $comment[$i]->Up }}
+                    <div id="voteUp{{ $comment[$i]->id }}"
+                        class="glyphicon glyphicon-thumbs-up<?=($comment[$i]->IsIpExist == 1) ? " disable-thumbs" : "";?>">
+                        {{ $comment[$i]->Up }}
                     </div>
                 </a>
             </div>
             <div class="col-lg-2">
                 <a href="#" onclick="vote({{ $comment[$i]->id }}, 0)">
-                    <div id="voteDown{{ $comment[$i]->id }}" class="glyphicon glyphicon-thumbs-down">
+                    <div id="voteDown{{ $comment[$i]->id }}"
+                        class="glyphicon glyphicon-thumbs-down<?=($comment[$i]->IsIpExist == 1) ? " disable-thumbs" : "";?>">
                         {{ $comment[$i]->Down }}</div>
                 </a>
             </div>

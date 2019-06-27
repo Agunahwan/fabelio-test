@@ -12,18 +12,23 @@ class VoteCommentController extends Controller
             $ip = $this->get_client_ip();
             $vote = new VoteComment();
 
-            $vote->comment_id = $commentId;
-            if ($isUp == 1) {
-                $vote->up = 1;
-                $vote->down = 0;
-            } else {
-                $vote->up = 0;
-                $vote->down = 1;
-            }
-            $vote->ip = $ip;
-            $vote->created_date = date('Y-m-d H:i:s');
+            $dataExists = $vote->getVote($commentId, $ip);
+            if (count($dataExists) == 0) {
+                $vote->comment_id = $commentId;
+                if ($isUp == 1) {
+                    $vote->up = 1;
+                    $vote->down = 0;
+                } else {
+                    $vote->up = 0;
+                    $vote->down = 1;
+                }
+                $vote->ip = $ip;
+                $vote->created_date = date('Y-m-d H:i:s');
 
-            $result = $vote->save();
+                $result = $vote->save();
+            } else {
+
+            }
 
             echo json_encode($result);
         } catch (\Illuminate\Database\QueryException $ex) {
