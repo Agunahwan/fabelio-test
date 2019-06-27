@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Product;
-
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -65,10 +64,11 @@ class ProductController extends Controller
         try {
             $product = new Product();
             $dataProduct = $product->getProduct($id);
+            $ip = $this->get_client_ip();
 
             // Get Comment
             $comment = new Comment();
-            $dataComment = $comment->getListAllComment($id);
+            $dataComment = $comment->getListAllCommentWithVote($id, $ip);
 
             if (count($dataProduct) == 0) {
                 $page = "https://fabelio.com/insider/data/product/id/" . $id;
@@ -144,5 +144,27 @@ class ProductController extends Controller
             echo $ex;
             // return redirect()->route('home');
         }
+    }
+
+    public function get_client_ip()
+    {
+        $ipaddress = '';
+        if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+        } else if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else if (isset($_SERVER['HTTP_X_FORWARDED'])) {
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+        } else if (isset($_SERVER['HTTP_FORWARDED_FOR'])) {
+            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+        } else if (isset($_SERVER['HTTP_FORWARDED'])) {
+            $ipaddress = $_SERVER['HTTP_FORWARDED'];
+        } else if (isset($_SERVER['REMOTE_ADDR'])) {
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+        } else {
+            $ipaddress = 'UNKNOWN';
+        }
+
+        return $ipaddress;
     }
 }
