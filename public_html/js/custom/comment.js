@@ -1,22 +1,43 @@
 $(document).ready(function() {
-//   get_all_comment();
+  //   get_all_comment();
 });
 
-// function refresh_data(data) {
-//   console.log(data[0]);
-//   $("#tbl_comment").empty();
-//   for (var i = 0; i < data.length; i++) {
-//     var data_column =
-//       "<tr><td><h2>" +
-//       data[i].title +
-//       " (" +
-//       data[i].created_date +
-//       ")</h2></td></tr><tr><td>" +
-//       data[i].comment +
-//       "</td></tr><tr><td>&nbsp</td></tr>";
-//     $("#tbl_comment").append(data_column);
-//   }
-// }
+function vote(comment_id, isUp) {
+  $.ajax({
+    url: local + "/vote/add/" + comment_id + "/" + isUp,
+    type: "GET",
+    dataType: "JSON",
+    success: function(data) {
+      console.log(data);
+      if (data == true) {
+        refresh_data(comment_id);
+      }
+    },
+    error: function(x, y, z) {
+      alert(z);
+    }
+  });
+}
+
+function refresh_data(comment_id) {
+  $.ajax({
+    url: local + "/vote/getvote/" + comment_id,
+    type: "GET",
+    dataType: "JSON",
+    success: function(data) {
+      console.log(data);
+      if (data.length > 0) {
+        $("#voteUp" + comment_id).addClass("disable-thumbs");
+        $("#voteDown" + comment_id).addClass("disable-thumbs");
+        $("#voteUp" + comment_id).text(" " + data[0].Up);
+        $("#voteDown" + comment_id).text(" " + data[0].Down);
+      }
+    },
+    error: function(x, y, z) {
+      alert(z);
+    }
+  });
+}
 
 // function get_all_comment() {
 //   var product_id = id;

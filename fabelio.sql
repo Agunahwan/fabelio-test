@@ -27,7 +27,7 @@ CREATE TABLE `comment` (
   `comment` varchar(500) DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `comment` */
 
@@ -36,7 +36,9 @@ insert  into `comment`(`id`,`product_id`,`title`,`comment`,`created_date`) value
 (2,24497,'baru','comment 1','2019-06-17 20:49:54'),
 (3,24497,'comment 2','ini comment 2','2019-06-17 21:13:13'),
 (4,5779,'Enak','Kursi nya empuk nih','2019-06-17 21:14:28'),
-(5,5779,'kedua','Comment kedua','2019-06-17 21:15:23');
+(5,5779,'kedua','Comment kedua','2019-06-17 21:15:23'),
+(6,416,'Title 1','Comment 1','2019-06-26 06:55:03'),
+(7,416,'Title 2','Comment 2','2019-06-27 07:52:21');
 
 /*Table structure for table `product` */
 
@@ -65,12 +67,21 @@ DROP TABLE IF EXISTS `vote_comment`;
 
 CREATE TABLE `vote_comment` (
   `comment_id` bigint(20) DEFAULT NULL,
-  `is_up` bit(1) DEFAULT NULL,
+  `up` bit(1) DEFAULT NULL,
+  `down` bit(1) DEFAULT NULL,
   `ip` varchar(50) DEFAULT NULL,
   `created_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `vote_comment` */
+
+insert  into `vote_comment`(`comment_id`,`up`,`down`,`ip`,`created_date`) values 
+(6,'','\0','::1','2019-06-27 10:36:41'),
+(6,'','\0','::1','2019-06-27 10:37:39'),
+(6,'','\0','::1','2019-06-27 10:37:51'),
+(6,'','\0','::1','2019-06-27 10:48:47'),
+(6,'','\0','::1','2019-06-27 10:49:47'),
+(6,'','\0','::1','2019-06-27 10:50:51');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
