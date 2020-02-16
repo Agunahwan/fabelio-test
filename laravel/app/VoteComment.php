@@ -38,7 +38,7 @@ class VoteComment extends Model
         $data = DB::table('vote_comment')
             ->where('comment_id', $commentId)
             ->where('ip', $ip)
-            ->select('1')
+            ->select('ip')
             ->get();
 
         return $data;

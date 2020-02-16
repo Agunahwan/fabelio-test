@@ -3,6 +3,7 @@ $(document).ready(function() {
 });
 
 function vote(comment_id, isUp) {
+  console.log(local + "/vote/add/" + comment_id + "/" + isUp);
   $.ajax({
     url: local + "/vote/add/" + comment_id + "/" + isUp,
     type: "GET",

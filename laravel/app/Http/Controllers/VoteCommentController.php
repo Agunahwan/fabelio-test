@@ -15,6 +15,7 @@ class VoteCommentController extends Controller
             $dataExists = $vote->getVote($commentId, $ip);
             if (count($dataExists) == 0) {
                 $vote->comment_id = $commentId;
+
                 if ($isUp == 1) {
                     $vote->up = 1;
                     $vote->down = 0;
@@ -27,7 +28,21 @@ class VoteCommentController extends Controller
 
                 $result = $vote->save();
             } else {
-
+                if ($isUp == 1) {
+                    $result = VoteComment::where('comment_id', $commentId)
+                        ->where('ip', $ip)
+                        ->update(
+                            ['up' => 1],
+                            ['down' => 0]
+                        );
+                } else {
+                    $result = VoteComment::where('comment_id', $commentId)
+                        ->where('ip', $ip)
+                        ->update(
+                            ['up' => 0],
+                            ['down' => 1]
+                        );
+                }
             }
 
             echo json_encode($result);
